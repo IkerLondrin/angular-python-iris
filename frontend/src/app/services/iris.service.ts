@@ -7,8 +7,12 @@ import {
     Iris,
     ProbabilityPrediction,
     SVCParameters,
-    SVCResult
-} from "./types";
+    SVCResult,
+    MLPParameters,
+    MLPProbabilityPrediction,
+    MLPResult,
+    modelsConfig
+} from "../models/types";
 
 const SERVER_URL: string = 'api/';
 
@@ -17,6 +21,7 @@ export class IrisService {
 
     constructor(private http: Http) {
     }
+
 
     public trainModel(svcParameters: SVCParameters): Observable<SVCResult> {
         return this.http.post(`${SERVER_URL}train`, svcParameters).
@@ -32,17 +37,24 @@ export class IrisService {
             );
     }
 
-    public trainModelMLP(): Observable<SVCResult> {
-        return this.http.post(`${SERVER_URL}trainMLP`,'')
+    public trainModelMLP(mlpParameters: MLPParameters): Observable<MLPResult> {
+        return this.http.post(`${SERVER_URL}trainMLP`, mlpParameters)
         .pipe(
             map((res) => res.json())
             );
     }
 
-    public predictIrisMLP(iris: Iris): Observable<ProbabilityPrediction[]> {
+    public predictIrisMLP(iris: Iris): Observable<MLPProbabilityPrediction[]> {
         return this.http.post(`${SERVER_URL}predictMLP`, iris).
         pipe(
             map((res) => res.json())
             );
+    }
+
+    public getModelsConfig(): Observable<modelsConfig> {
+        return this.http.get('../../assets/data/modelsConfig.json').
+        pipe(
+            map((res) => res.json())
+        )
     }
 }

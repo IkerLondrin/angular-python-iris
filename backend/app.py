@@ -16,6 +16,7 @@ app = Flask(__name__)
 def train():
     # get parameters from request
     parameters = request.get_json()
+    print('Parametros del SVM:', parameters)
 
     # read iris data set
     iris = datasets.load_iris()
@@ -51,10 +52,23 @@ def predict():
 
 @app.route('/api/trainMLP', methods=['POST'])
 def trainMLP():
+    # get parameters from request
+    parameters = request.get_json()
+    print('parameters: ', parameters)
     # read iris data set
     iris = datasets.load_iris()
     X, y = iris.data, iris.target
     # Train the model
+    mlp = MLPClassifier(hidden_layer_sizes = int(parameters['hidden_layer_sizes']),
+                        activation= str(parameters['activation']),
+                        solver = str(parameters['solver']),
+                        alpha = float(parameters['alpha']),
+                        batch_size = int(parameters['batch_size']),
+                        learning_rate = str(parameters['learning_rate']),
+                        max_iter = int(parameters['max_iter']),
+                        momentum = float(parameters['momentum']),
+                        early_stopping = bool(parameters['early_stopping'])            
+                         )
     mlp.fit(X, y)
 
     # Outputs:

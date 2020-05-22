@@ -1,11 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {IrisService} from "./iris.service";
-import {
-    Iris,
-    ProbabilityPrediction,
-    SVCParameters,
-    SVCResult
-} from "./types";
+import { Component, OnInit } from '@angular/core';
+// import {
+//     Iris,
+//     ProbabilityPrediction,
+//     SVCParameters,
+//     SVCResult
+// } from "../../components/selector-modelo/types";
 
 @Component({
     selector: 'home',
@@ -14,46 +13,40 @@ import {
 })
 export class HomeComponent implements OnInit {
 
-    public svcParameters: SVCParameters = new SVCParameters();
-    public svcResult: SVCResult;
-    public iris: Iris = new Iris();
-    public probabilityPredictions: ProbabilityPrediction[];
+    accuracyModelo: any;
 
     // graph styling
     public colorScheme = {
         domain: ['#1a242c', '#e81746', '#e67303', '#f0f0f0']
     };
 
-    constructor(private irisService: IrisService) {
+    modeloSeleccionado: string; 
+
+    // Modelos disponiblees
+    modelosDisponibles = [
+        {
+            model: 'Support Vector Machine',
+            id: 'SVM'
+        },
+        { 
+            model: 'Multi Layer Perceptron', 
+            id: 'MLP'}
+    ];
+
+
+    constructor() {
     }
 
     ngOnInit() {
     }
 
-    public trainModel() {
-        this.irisService.trainModel(this.svcParameters).subscribe((svcResult) => {
-            this.svcResult = svcResult;
-        });
+    // Con esto recibimos la precisión del modelo del componente que
+    // hace el entrenamiento. Ahora podemos propagar esta variable
+    // a otros componentes
+    AccuracyShare(event) {
+        this.accuracyModelo = event;
     }
 
-    public predictIris() {
-        this.irisService.predictIris(this.iris).subscribe((probabilityPredictions) => {
-            this.probabilityPredictions = probabilityPredictions;
-        });
-    }
-
-
-    public trainModelMLP() {
-        this.irisService.trainModelMLP().subscribe((Result) => {
-            this.svcResult = Result;
-        });
-    }
-
-    public predictIrisMLP() {
-        this.irisService.predictIrisMLP(this.iris).subscribe((probabilityPredictions) => {
-            this.probabilityPredictions = probabilityPredictions;
-        });
-    }
 
 
 

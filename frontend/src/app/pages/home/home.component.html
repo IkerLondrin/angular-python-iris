@@ -1,87 +1,73 @@
 <div fxLayoutAlign="center center" fxLayout="column">
-    <h1>Iris Model - Example</h1>
+    <h1>PoC Data Science Angular front y API REST flask</h1>
 
     <div class="home__training">
-        <h3>Train Classification Model (Support Vector Machine)</h3>
-        <mat-card fxLayoutAlign="center center" fxLayout="column">
+        <h3>Modelos disponibles: SVM & MLP</h3>
+
+        <mat-form-field class="dropdown-modelos">
+            <mat-label>Seleccionar modelo de clasificación...</mat-label>
+            <select matNativeControl required [(ngModel)]="modeloSeleccionado">
+                <option *ngFor="let modelo of modelosDisponibles" [ngValue]="modelo.id">
+                    {{modelo.model}}
+                </option>
+
+            </select>
+        </mat-form-field>
+
+        <selector-modelo [modelo]="modeloSeleccionado" (accuracyModelo)="AccuracyShare($event)"></selector-modelo>
+        <app-predicciones [precisionModelo]="accuracyModelo"></app-predicciones>
+
+
+        <!-- <mat-card fxLayoutAlign="center center" fxLayout="column">
             <h4>Set Parameter for Model Training</h4>
-
-                <input
-                    mdInput
-                    name="C Parameter"
-                    placeholder="C Parameter"
-                    [(ngModel)]="svcParameters.C">
-
+            <mat-form-field>
+                <input matInput name="C Parameter" placeholder="C Parameter" [(ngModel)]="svcParameters.C">
+            </mat-form-field>
             <button mat-raised-button (click)="trainModel()">
                 Train model
             </button>
-        </mat-card>
-
-        <div *ngIf="svcResult"
-             fxLayoutAlign="center center"
-             fxLayout="column">
+        </mat-card>  -->
+        <!-- 
+        <div *ngIf="svcResult" fxLayoutAlign="center center" fxLayout="column">
             <h4>Training Accuracy</h4>
-            <ngx-charts-linear-gauge
-                [view]="[300, 100]"
-                [value]="svcResult.accuracy"
-                [scheme]="colorScheme"
-                [min]="0"
-                [max]="100"
-                [units]="'% accuracy'">
+            <ngx-charts-linear-gauge [view]="[300, 100]" [value]="svcResult.accuracy" [scheme]="colorScheme" [min]="0"
+                [max]="100" [units]="'% accuracy'">
             </ngx-charts-linear-gauge>
         </div>
-    </div>
+    </div> -->
 
-    <div class="home__prediction"
-         fxLayoutAlign="center center"
-         fxLayout="column">
+        <!--  <div class="home__prediction" fxLayoutAlign="center center" fxLayout="column">
         <h3>Predict Iris classes</h3>
 
         <mat-card fxLayoutAlign="center center" fxLayout="column">
             <h4>Define Iris</h4>
             <div fxLayout="row">
-
-                    <input mdInput
-                           name="Sepal width"
-                           placeholder="Sepal width"
-                           [(ngModel)]="iris.sepalWidth">
-
-
-                    <input mdInput
-                           name="Sepal length"
-                           placeholder="Sepal length"
-                           [(ngModel)]="iris.sepalLength">
-
+                <mat-form-field>
+                    <input matInput name="Sepal width" placeholder="Sepal width" [(ngModel)]="iris.sepalWidth">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput name="Sepal length" placeholder="Sepal length" [(ngModel)]="iris.sepalLength">
+                </mat-form-field>
             </div>
             <div fxLayout="row">
-
-                    <input mdInput
-                           name="Petal width"
-                           placeholder="Petal width"
-                           [(ngModel)]="iris.petalWidth">
-
-                    <input mdInput
-                           name="Petal length"
-                           placeholder="Petal length"
-                           [(ngModel)]="iris.petalLength">
-
+                <mat-form-field>
+                    <input matInput name="Petal width" placeholder="Petal width" [(ngModel)]="iris.petalWidth">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput name="Petal length" placeholder="Petal length" [(ngModel)]="iris.petalLength">
+                </mat-form-field>
             </div>
             <div>
                 <button mat-raised-button (click)="predictIris()">Predict iris</button>
             </div>
         </mat-card>
 
-        <div *ngIf="probabilityPredictions"
-             fxLayoutAlign="center center"
-             fxLayout="column"
-             class="home__chart-container">
-            <h4>Prediction Result</h4>
-            <ngx-charts-pie-chart
-                [results]="probabilityPredictions"
-                [scheme]="colorScheme"
-                [labels]="true"
+        <div *ngIf="probabilityPredictions" fxLayoutAlign="center center" fxLayout="column"
+            class="home__chart-container">
+            <h4>Predicción</h4>
+            <ngx-charts-pie-chart [results]="probabilityPredictions" [scheme]="colorScheme" [labels]="true"
                 [legend]="true">
             </ngx-charts-pie-chart>
         </div>
+    </div> -->
     </div>
-</div>

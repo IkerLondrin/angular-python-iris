@@ -1,5 +1,4 @@
 <div *ngIf="precisionModelo" fxLayoutAlign="center center" fxLayout="column">
-
     <h4>Precisión del modelo</h4>
     <ngx-charts-linear-gauge [view]="[300, 100]" [value]="precisionModelo" [scheme]="colorScheme" [min]="0"
         [max]="100" [units]="'% de precisión'">

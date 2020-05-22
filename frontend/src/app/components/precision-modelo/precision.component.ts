@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { colorSchema } from '../../models/colors';
 
 @Component({
-  selector: 'app-predicciones',
-  templateUrl: './predicciones.component.html',
-  styleUrls: ['./predicciones.component.scss']
+  selector: 'app-precision',
+  templateUrl: './precision.component.html',
+  styleUrls: ['./precision.component.scss']
 })
-export class PrediccionesComponent implements OnInit {
+export class PrecisionComponent implements OnInit {
 
   @Input() precisionModelo: number;
   public colorScheme = {

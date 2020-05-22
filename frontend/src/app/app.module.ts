@@ -13,14 +13,16 @@ import {ROUTES} from './app.routes';
 import {HomeComponent} from './pages/home/home.component';
 import {IrisService} from './services/iris.service';
 import { SelectorModeloComponent } from './components/selector-modelo/selector-modelo.component';
-import { PrediccionesComponent } from './components/predicciones/predicciones.component';
+import { PrecisionComponent } from './components/precision-modelo/precision.component';
+import { SelectorVariablesComponent } from './components/selector-variables/selector-variables.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         HomeComponent,
         SelectorModeloComponent,
-        PrediccionesComponent,
+        PrecisionComponent,
+        SelectorVariablesComponent,
     ],
     imports: [
         BrowserModule,

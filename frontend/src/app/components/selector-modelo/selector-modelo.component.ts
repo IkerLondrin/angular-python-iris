@@ -42,7 +42,6 @@ export class SelectorModeloComponent implements OnInit {
     this.irisService.getModelsConfig().subscribe((data) => {
       this.configs = data;
     })
-
   }
 
   public trainModel() {

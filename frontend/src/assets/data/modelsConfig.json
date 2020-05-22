@@ -1,18 +1,75 @@
 {
-
-    "SVC" : {
-        "C" : 2
+    "SVC": {
+        "C": 2,
+        "kernel": [
+            {
+                "id": "linear",
+                "desc": "Kernel lineal"
+            },
+            {
+                "id": "poly",
+                "desc": "Kernel polinómico"
+            },
+            {
+                "id": "sigmoid",
+                "desc": "Función sigmoide"
+            },
+            {
+                "id": "precomputed",
+                "desc": "Kernel precalculado"
+            }
+        ],
+        "degree": 3,
+        "gamma": [
+            "scale",
+            "auto"
+        ],
+        "max_iter": -1,
+        "random_state": 10
     },
-
     "MLP": {
         "hidden_layer_sizes": 10,
-        "activation": ["relu","logistic", "tanh","identity"],
-        "solver": ["lbfgs", "sgd", "adam"],
-        "alpha" : 0.001,
-        "batch_size" : 10,
-        "learning_rate": ["constant", "invscaling", "adaptive"],
+        "activation": [
+            {
+                "id": "relu",
+                "desc": "Función reLU"
+            },
+            {
+                "id": "logistic",
+                "desc": "Función logística"
+            },
+            {
+                "id": "tanh",
+                "desc": "Función tangente hiperbólica"
+            },
+            {
+                "id": "identity",
+                "desc": "Función identity"
+            }
+        ],
+        "solver": [
+            "lbfgs",
+            "sgd",
+            "adam"
+        ],
+        "alpha": 0.001,
+        "batch_size": 10,
+        "learning_rate": [
+            "constant",
+            "invscaling",
+            "adaptive"
+        ],
         "max_iter": 500,
         "momentum": 0.9,
-        "early_stopping": ["False", "True"]
+        "early_stopping": [
+            {
+                "id": "False",
+                "desc": "No"
+            },
+            {
+                "id": "True",
+                "desc": "Si"
+            }
+        ]
     }
 }

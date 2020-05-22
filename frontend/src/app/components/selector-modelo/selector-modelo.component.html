@@ -2,8 +2,42 @@
     <mat-card fxLayoutAlign="center center" fxLayout="column">
         <h4>Establecer el parámetro para SVM</h4>
         <mat-form-field>
+            <mat-label>Parámetro de regularización</mat-label>
             <input matInput name="C Parameter" placeholder="Establecer parámetro" [(ngModel)]="svcParameters.C"
                 required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Función de kernel</mat-label>
+            <select matNativeControl name="kernel" ngDefaultControl required [(ngModel)]="svcParameters.kernel">
+                <option *ngFor="let kernel of configs.SVC.kernel" [ngValue]="kernel.id">
+                    {{ kernel.desc }}
+                </option>
+            </select>
+        </mat-form-field>
+        <div *ngIf="svcParameters.kernel=='poly'" class="conditional-select">
+            <mat-form-field>
+                <mat-label>Grado del polinomio</mat-label>
+                <input matInput name="degree" placeholder="Grado del polinomio" [(ngModel)]="svcParameters.degree"
+                    required>
+            </mat-form-field>
+        </div>
+        <mat-form-field>
+            <mat-label>Función Gamma</mat-label>
+            <select matNativeControl name="gamma" ngDefaultControl required [(ngModel)]="svcParameters.gamma">
+                <option *ngFor="let gamma of configs.SVC.gamma" [ngValue]="gamma">
+                    {{ gamma }}
+                </option>
+            </select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Iteraciones máximas</mat-label>
+            <input matInput name="max_iter" placeholder="Establecer parámetro" [(ngModel)]="svcParameters.max_iter"
+                required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Random state</mat-label>
+            <input matInput name="random_state" placeholder="Establecer parámetro"
+                [(ngModel)]="svcParameters.random_state" required>
         </mat-form-field>
         <button mat-raised-button (click)="trainModel()">
             Entrenar el SVM
@@ -12,20 +46,22 @@
 </div>
 
 
+
 <div *ngIf="modelo == 'MLP'">
     <mat-card fxLayoutAlign="center center" fxLayout="column" style="width: 350px;">
         <h4>Establecer parámetros para MLP</h4>
 
         <mat-form-field>
-            <input matInput name="hidden_layer_sizes" ngDefaultControl placeholder="Introducir cantidad de capas ocultas"
-                [(ngModel)]="mlpParameters.hidden_layer_sizes" required >
+            <input matInput name="hidden_layer_sizes" ngDefaultControl
+                placeholder="Introducir cantidad de capas ocultas" [(ngModel)]="mlpParameters.hidden_layer_sizes"
+                required>
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Función de activación</mat-label>
-            <select matNativeControl name="activation" ngDefaultControl required  [(ngModel)]="mlpParameters.activation">
-                <option *ngFor="let activacion of configs.MLP.activation" [ngValue]="activacion" >
-                    {{ activacion }}
+            <select matNativeControl name="activation" ngDefaultControl required [(ngModel)]="mlpParameters.activation">
+                <option *ngFor="let activacion of configs.MLP.activation" [ngValue]="activacion.id">
+                    {{ activacion.desc }}
                 </option>
             </select>
         </mat-form-field>
@@ -38,34 +74,41 @@
             </select>
         </mat-form-field>
         <mat-form-field>
-            <input matInput name="alpha" ngDefaultControl placeholder="Introducir alpha (penalización L2)"
+            <mat-label>Parámetro de penalización (L2)</mat-label>
+            <input matInput name="alpha" ngDefaultControl placeholder="Introducir alpha"
                 [(ngModel)]="mlpParameters.alpha" required>
         </mat-form-field>
         <mat-form-field>
+            <mat-label>Tamaño del batch</mat-label>
             <input matInput name="batch_size" ngDefaultControl placeholder="Tamaño del batch"
                 [(ngModel)]="mlpParameters.batch_size" required>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Ratio de aprendizaje</mat-label>
-            <select matNativeControl name="learning_rate" ngDefaultControl required [(ngModel)]="mlpParameters.learning_rate">
+            <select matNativeControl name="learning_rate" ngDefaultControl required
+                [(ngModel)]="mlpParameters.learning_rate">
                 <option *ngFor="let lr of configs.MLP.learning_rate" [ngValue]="lr">
                     {{ lr }}
                 </option>
             </select>
         </mat-form-field>
         <mat-form-field>
+            <mat-label>Iteraciones máximas</mat-label>
             <input matInput name="max_iter" ngDefaultControl placeholder="Cantidad máxima de iteraciones"
                 [(ngModel)]="mlpParameters.max_iter" required>
         </mat-form-field>
         <mat-form-field>
-            <input matInput name="momentum" ngDefaultControl placeholder="Introducir momentum" [(ngModel)]="mlpParameters.momentum"
-                required>
+            <mat-label>Momentum</mat-label>
+            <input matInput name="momentum" ngDefaultControl placeholder="Introducir momentum"
+                [(ngModel)]="mlpParameters.momentum" required>
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Early stopping </mat-label>
-            <select matNativeControl name="early_stopping" ngDefaultControl required [(ngModel)]="mlpParameters.early_stopping">
-                <option *ngFor="let early_stopping of configs.MLP.early_stopping" [ngValue]="early_stopping" [(ngModel)]="mlpParameters.early_stopping">
-                    {{ early_stopping }}
+            <mat-label>Early stopping</mat-label>
+            <select matNativeControl ngDefaultControl required
+                [(ngModel)]="mlpParameters.early_stopping">
+                <option *ngFor="let early_stopping of configs.MLP.early_stopping" [ngValue]="early_stopping.id"
+                    [(ngModel)]="mlpParameters.early_stopping">
+                    {{ early_stopping.desc }}
                 </option>
             </select>
         </mat-form-field>

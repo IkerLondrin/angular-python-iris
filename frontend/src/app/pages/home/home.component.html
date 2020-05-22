@@ -1,73 +1,17 @@
 <div fxLayoutAlign="center center" fxLayout="column">
-    <h1>PoC Data Science Angular front y API REST flask</h1>
-
     <div class="home__training">
-        <h3>Modelos disponibles: SVM & MLP</h3>
-
+        <h3>Selección de modelo de ML</h3>
         <mat-form-field class="dropdown-modelos">
             <mat-label>Seleccionar modelo de clasificación...</mat-label>
             <select matNativeControl required [(ngModel)]="modeloSeleccionado">
                 <option *ngFor="let modelo of modelosDisponibles" [ngValue]="modelo.id">
                     {{modelo.model}}
                 </option>
-
             </select>
         </mat-form-field>
-
         <selector-modelo [modelo]="modeloSeleccionado" (accuracyModelo)="AccuracyShare($event)"></selector-modelo>
         <app-precision [precisionModelo]="accuracyModelo"></app-precision>
-
-
-        <!-- <mat-card fxLayoutAlign="center center" fxLayout="column">
-            <h4>Set Parameter for Model Training</h4>
-            <mat-form-field>
-                <input matInput name="C Parameter" placeholder="C Parameter" [(ngModel)]="svcParameters.C">
-            </mat-form-field>
-            <button mat-raised-button (click)="trainModel()">
-                Train model
-            </button>
-        </mat-card>  -->
-        <!-- 
-        <div *ngIf="svcResult" fxLayoutAlign="center center" fxLayout="column">
-            <h4>Training Accuracy</h4>
-            <ngx-charts-linear-gauge [view]="[300, 100]" [value]="svcResult.accuracy" [scheme]="colorScheme" [min]="0"
-                [max]="100" [units]="'% accuracy'">
-            </ngx-charts-linear-gauge>
-        </div>
-    </div> -->
-
-        <!--  <div class="home__prediction" fxLayoutAlign="center center" fxLayout="column">
-        <h3>Predict Iris classes</h3>
-
-        <mat-card fxLayoutAlign="center center" fxLayout="column">
-            <h4>Define Iris</h4>
-            <div fxLayout="row">
-                <mat-form-field>
-                    <input matInput name="Sepal width" placeholder="Sepal width" [(ngModel)]="iris.sepalWidth">
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput name="Sepal length" placeholder="Sepal length" [(ngModel)]="iris.sepalLength">
-                </mat-form-field>
-            </div>
-            <div fxLayout="row">
-                <mat-form-field>
-                    <input matInput name="Petal width" placeholder="Petal width" [(ngModel)]="iris.petalWidth">
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput name="Petal length" placeholder="Petal length" [(ngModel)]="iris.petalLength">
-                </mat-form-field>
-            </div>
-            <div>
-                <button mat-raised-button (click)="predictIris()">Predict iris</button>
-            </div>
-        </mat-card>
-
-        <div *ngIf="probabilityPredictions" fxLayoutAlign="center center" fxLayout="column"
-            class="home__chart-container">
-            <h4>Predicción</h4>
-            <ngx-charts-pie-chart [results]="probabilityPredictions" [scheme]="colorScheme" [labels]="true"
-                [legend]="true">
-            </ngx-charts-pie-chart>
-        </div>
-    </div> -->
+        <app-selector-variables [accuracyModelo]="accuracyModelo" [colorScheme]="colorScheme"
+            [modelo]="modeloSeleccionado"></app-selector-variables>
     </div>
+</div>

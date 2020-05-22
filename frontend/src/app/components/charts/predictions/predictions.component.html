@@ -1,0 +1,11 @@
+<div *ngIf="predictionsSVC" fxLayoutAlign="center center" fxLayout="column" style="height: 100%;">
+    <h4>Predicción</h4>
+    <ngx-charts-pie-chart [view]="[600,500]" [results]="predictionsSVC" [scheme]="colorScheme" [labels]="true"
+        [legend]="true">
+    </ngx-charts-pie-chart>
+</div>
+<div *ngIf="predictionsMLP" fxLayoutAlign="center center" fxLayout="column" class="home__chart-container">
+    <ngx-charts-pie-chart [view]="[600,500]" [results]="predictionsMLP" [scheme]="colorScheme" [labels]="true"
+        [legend]="true">
+    </ngx-charts-pie-chart>
+</div>

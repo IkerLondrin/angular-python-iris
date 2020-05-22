@@ -15,6 +15,7 @@ import {IrisService} from './services/iris.service';
 import { SelectorModeloComponent } from './components/selector-modelo/selector-modelo.component';
 import { PrecisionComponent } from './components/precision-modelo/precision.component';
 import { SelectorVariablesComponent } from './components/selector-variables/selector-variables.component';
+import { PredictionsComponent } from './components/charts/predictions/predictions.component';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import { SelectorVariablesComponent } from './components/selector-variables/sele
         SelectorModeloComponent,
         PrecisionComponent,
         SelectorVariablesComponent,
+        PredictionsComponent,
     ],
     imports: [
         BrowserModule,

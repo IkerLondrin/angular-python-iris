@@ -1,12 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { colorSchema } from '../../models/colors';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-precision',
   templateUrl: './precision.component.html',
   styleUrls: ['./precision.component.scss']
 })
-export class PrecisionComponent implements OnInit {
+export class PrecisionComponent {
 
   @Input() precisionModelo: number;
   public colorScheme = {
@@ -14,8 +13,5 @@ export class PrecisionComponent implements OnInit {
   };
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

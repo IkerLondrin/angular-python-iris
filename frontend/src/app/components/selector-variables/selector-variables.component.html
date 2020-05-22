@@ -1,0 +1,35 @@
+<div *ngIf="accuracyModelo">
+    <mat-card fxLayoutAlign="center center" fxLayout="column">
+        <h4>Introducir variables para la predicción:</h4>
+        <div fxLayout="row">
+            <mat-form-field>
+                <input matInput name="Sepal width" placeholder="Sepal width" [(ngModel)]="iris.sepalWidth">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput name="Sepal length" placeholder="Sepal length" [(ngModel)]="iris.sepalLength">
+            </mat-form-field>
+        </div>
+        <div fxLayout="row">
+            <mat-form-field>
+                <input matInput name="Petal width" placeholder="Petal width" [(ngModel)]="iris.petalWidth">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput name="Petal length" placeholder="Petal length" [(ngModel)]="iris.petalLength">
+            </mat-form-field>
+        </div>
+        <div>
+            <button mat-raised-button (click)="predict()">Predict {{ modelo }}</button>
+        </div>
+    </mat-card>
+
+    <div *ngIf="probabilityPredictions || mlpProbabilityPrediction" class="predicciones-span">
+        <span *ngFor="let preds of  probabilityPredictions">
+            {{ preds.name + ': ' + preds.value+ '%' + '&nbsp; &nbsp; &nbsp; &nbsp;'}}
+        </span>
+        <span *ngFor="let preds of  mlpProbabilityPrediction">
+            {{ preds.name + ': ' + preds.value + '%' + '&nbsp; &nbsp; &nbsp; &nbsp;'}}
+        </span>
+        <app-predictions [predictionsSVC]="probabilityPredictions" [predictionsMLP]="mlpProbabilityPrediction"
+            [colorScheme]="colorScheme"></app-predictions>
+    </div>
+</div>

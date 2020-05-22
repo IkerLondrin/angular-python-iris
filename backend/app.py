@@ -49,7 +49,8 @@ def predict():
 
 
 
-@app.route('/api/trainMLP', methods=['POST']):
+@app.route('/api/trainMLP', methods=['POST'])
+def trainMLP():
     # read iris data set
     iris = datasets.load_iris()
     X, y = iris.data, iris.target
@@ -70,7 +71,8 @@ def predict():
     return jsonify({'accuracy': round(mlp.score(X, y) * 100, 2)})
 
 
-@app.route('/api/predictMLP', methods = ['POST']):
+@app.route('/api/predictMLP', methods = ['POST'])
+def predictMLP():
     # get iris object from request
     X = request.get_json()
     X = [[float(X['sepalLength']), float(X['sepalWidth']), float(X['petalLength']), float(X['petalWidth'])]]

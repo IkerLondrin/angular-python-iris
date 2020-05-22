@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
+import { map } from 'rxjs/operators';
 import {Http} from "@angular/http";
-import {Observable} from "rxjs/Observable";
+import {Observable} from "rxjs";
 import 'rxjs/add/operator/map';
 import {
     Iris,
@@ -18,18 +19,30 @@ export class IrisService {
     }
 
     public trainModel(svcParameters: SVCParameters): Observable<SVCResult> {
-        return this.http.post(`${SERVER_URL}train`, svcParameters).map((res) => res.json());
+        return this.http.post(`${SERVER_URL}train`, svcParameters).
+        pipe(
+            map((res) => res.json())
+        );
     }
 
     public predictIris(iris: Iris): Observable<ProbabilityPrediction[]> {
-        return this.http.post(`${SERVER_URL}predict`, iris).map((res) => res.json());
+        return this.http.post(`${SERVER_URL}predict`, iris).
+        pipe(
+            map((res) => res.json())
+            );
     }
 
     public trainModelMLP(): Observable<SVCResult> {
-        return this.http.post(`${SERVER_URL}trainMLP`).map((res) => res.json());
+        return this.http.post(`${SERVER_URL}trainMLP`,'')
+        .pipe(
+            map((res) => res.json())
+            );
     }
 
     public predictIrisMLP(iris: Iris): Observable<ProbabilityPrediction[]> {
-        return this.http.post(`${SERVER_URL}predictMLP`, iris).map((res) => res.json());
+        return this.http.post(`${SERVER_URL}predictMLP`, iris).
+        pipe(
+            map((res) => res.json())
+            );
     }
 }

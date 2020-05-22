@@ -24,4 +24,12 @@ export class IrisService {
     public predictIris(iris: Iris): Observable<ProbabilityPrediction[]> {
         return this.http.post(`${SERVER_URL}predict`, iris).map((res) => res.json());
     }
+
+    public trainModelMLP(): Observable<SVCResult> {
+        return this.http.post(`${SERVER_URL}trainMLP`).map((res) => res.json());
+    }
+
+    public predictIrisMLP(iris: Iris): Observable<ProbabilityPrediction[]> {
+        return this.http.post(`${SERVER_URL}predictMLP`, iris).map((res) => res.json());
+    }
 }

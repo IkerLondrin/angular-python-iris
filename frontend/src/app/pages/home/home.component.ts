@@ -42,4 +42,19 @@ export class HomeComponent implements OnInit {
         });
     }
 
+
+    public trainModelMLP() {
+        this.irisService.trainModelMLP().subscribe((Result) => {
+            this.svcResult = Result;
+        });
+    }
+
+    public predictIrisMLP() {
+        this.irisService.predictIrisMLP(this.iris).subscribe((probabilityPredictions) => {
+            this.probabilityPredictions = probabilityPredictions;
+        });
+    }
+
+
+
 }

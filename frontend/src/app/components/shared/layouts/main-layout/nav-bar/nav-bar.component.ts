@@ -23,6 +23,9 @@ export class NavBarComponent implements OnInit {
     @Input()
     public logoGithub: string = '';
 
+    @Input()
+    public logoLinkedin: string = '';
+
     constructor() {
     }
 

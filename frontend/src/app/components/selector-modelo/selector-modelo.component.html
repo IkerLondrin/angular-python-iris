@@ -1,10 +1,10 @@
 <div *ngIf="modelo == 'SVM'">
     <mat-card fxLayoutAlign="center center" fxLayout="column">
-        <h4>Establecer el parámetro para SVM</h4>
+        <h4>Establecer parámetros para SVM</h4>
         <mat-form-field>
             <mat-label>Parámetro de regularización</mat-label>
-            <input matInput name="C Parameter" placeholder="Establecer parámetro" [(ngModel)]="svcParameters.C"
-                required>
+            <input matInput type="number" name="C Parameter" placeholder="Establecer parámetro"
+                [(ngModel)]="svcParameters.C" required>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Función de kernel</mat-label>
@@ -17,8 +17,8 @@
         <div *ngIf="svcParameters.kernel=='poly'" class="conditional-select">
             <mat-form-field>
                 <mat-label>Grado del polinomio</mat-label>
-                <input matInput name="degree" placeholder="Grado del polinomio" [(ngModel)]="svcParameters.degree"
-                    required>
+                <input matInput type="number" name="degree" placeholder="Grado del polinomio"
+                    [(ngModel)]="svcParameters.degree" required>
             </mat-form-field>
         </div>
         <mat-form-field>
@@ -31,16 +31,18 @@
         </mat-form-field>
         <mat-form-field>
             <mat-label>Iteraciones máximas</mat-label>
-            <input matInput name="max_iter" placeholder="Establecer parámetro" [(ngModel)]="svcParameters.max_iter"
-                required>
+            <input matInput type="number" name="max_iter" placeholder="Establecer parámetro"
+                [(ngModel)]="svcParameters.max_iter" required>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Random state</mat-label>
-            <input matInput name="random_state" placeholder="Establecer parámetro"
+            <input matInput type="number" name="random_state" placeholder="Establecer parámetro"
                 [(ngModel)]="svcParameters.random_state" required>
         </mat-form-field>
-        <button mat-raised-button (click)="trainModel()">
-            Entrenar el SVM
+        <button mat-raised-button (click)="trainModel()" title="Todos los campos son requeridos"
+            [ngClass]="{'buttonWarning': !svcParameters.C || !svcParameters.degree || !svcParameters.max_iter || !svcParameters.random_state}"
+            [disabled]="!svcParameters.C || !svcParameters.degree || !svcParameters.max_iter || !svcParameters.random_state">
+            Entrenar el modelo SVM
         </button>
     </mat-card>
 </div>
@@ -48,11 +50,11 @@
 
 
 <div *ngIf="modelo == 'MLP'">
-    <mat-card fxLayoutAlign="center center" fxLayout="column" style="width: 350px;">
+    <mat-card fxLayoutAlign="center center" fxLayout="column">
         <h4>Establecer parámetros para MLP</h4>
 
         <mat-form-field>
-            <input matInput name="hidden_layer_sizes" ngDefaultControl
+            <input matInput type="number" name="hidden_layer_sizes" ngDefaultControl
                 placeholder="Introducir cantidad de capas ocultas" [(ngModel)]="mlpParameters.hidden_layer_sizes"
                 required>
         </mat-form-field>
@@ -75,12 +77,12 @@
         </mat-form-field>
         <mat-form-field>
             <mat-label>Parámetro de penalización (L2)</mat-label>
-            <input matInput name="alpha" ngDefaultControl placeholder="Introducir alpha"
+            <input matInput type="number" name="alpha" ngDefaultControl placeholder="Introducir alpha"
                 [(ngModel)]="mlpParameters.alpha" required>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Tamaño del batch</mat-label>
-            <input matInput name="batch_size" ngDefaultControl placeholder="Tamaño del batch"
+            <input matInput type="number" name="batch_size" ngDefaultControl placeholder="Tamaño del batch"
                 [(ngModel)]="mlpParameters.batch_size" required>
         </mat-form-field>
         <mat-form-field>
@@ -94,26 +96,26 @@
         </mat-form-field>
         <mat-form-field>
             <mat-label>Iteraciones máximas</mat-label>
-            <input matInput name="max_iter" ngDefaultControl placeholder="Cantidad máxima de iteraciones"
+            <input matInput type="number" name="max_iter" ngDefaultControl placeholder="Cantidad máxima de iteraciones"
                 [(ngModel)]="mlpParameters.max_iter" required>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Momentum</mat-label>
-            <input matInput name="momentum" ngDefaultControl placeholder="Introducir momentum"
+            <input matInput type="number" name="momentum" ngDefaultControl placeholder="Introducir momentum"
                 [(ngModel)]="mlpParameters.momentum" required>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Early stopping</mat-label>
-            <select matNativeControl ngDefaultControl required
-                [(ngModel)]="mlpParameters.early_stopping">
-                <option *ngFor="let early_stopping of configs.MLP.early_stopping" [ngValue]="early_stopping.id"
-                    [(ngModel)]="mlpParameters.early_stopping">
+            <select matNativeControl ngDefaultControl required [(ngModel)]="mlpParameters.early_stopping">
+                <option *ngFor="let early_stopping of configs.MLP.early_stopping" [ngValue]="early_stopping.id">
                     {{ early_stopping.desc }}
                 </option>
             </select>
         </mat-form-field>
-        <button mat-raised-button (click)="trainModelMLP()">
-            Entrenar MLP
+        <button mat-raised-button (click)="trainModelMLP()" title="Todos los campos son necesarios"
+            [ngClass]="{'buttonWarning': !mlpParameters.alpha || !mlpParameters.batch_size  || !mlpParameters.hidden_layer_sizes || !mlpParameters.momentum}"
+            [disabled]="!mlpParameters.alpha || !mlpParameters.batch_size  || !mlpParameters.hidden_layer_sizes || !mlpParameters.momentum">
+            Entrenar el modelo MLP
         </button>
     </mat-card>
 </div>

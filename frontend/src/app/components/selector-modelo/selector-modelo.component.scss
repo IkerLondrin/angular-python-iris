@@ -13,4 +13,10 @@ mat-form-field {
 /* Border */
 .mat-form-field-appearance-outline .mat-form-field-outline {
     color: blue;
-  }
+}
+
+.buttonWarning {
+    background-color: white !important;
+    color: red !important;
+    border: 2px solid #f44336 !important;
+}

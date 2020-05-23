@@ -8,9 +8,9 @@ import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatInputModule} from '@angular/material/input';
 // own modules and components
 import {AppComponent} from './app.component';
-import {SharedModule} from './shared/shared.module';
+import {SharedModule} from './components/shared/shared.module';
 import {ROUTES} from './app.routes';
-import {HomeComponent} from './pages/home/home.component';
+import {HomeComponent} from './components/pages/home/home.component';
 import {IrisService} from './services/iris.service';
 import { SelectorModeloComponent } from './components/selector-modelo/selector-modelo.component';
 import { PrecisionComponent } from './components/precision-modelo/precision.component';

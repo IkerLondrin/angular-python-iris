@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
 import {ROUTES} from "./app.routes";
-import {NavigationItem} from './shared/layouts/main-layout';
+import {NavigationItem} from './components/shared/layouts/main-layout';
 import 'rxjs/add/operator/filter';
 
 @Component({

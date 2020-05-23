@@ -33,12 +33,10 @@ export class SelectorModeloComponent implements OnInit {
 
 
 
-  dataEnviar: string = 'mensaje al padre';
-
   constructor(private irisService: IrisService) { }
 
   ngOnInit(): void {
-    // Nos traemos las configs de los models!
+    // Nos traemos las configs de los modelos!
     this.irisService.getModelsConfig().subscribe((data) => {
       this.configs = data;
     })

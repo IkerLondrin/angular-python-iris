@@ -38,7 +38,7 @@ export class MLPParameters {
     learning_rate: string = 'constant';
     max_iter: number = 200;
     momentum: number = 0.9;
-    early_stopping: boolean = false;
+    early_stopping: string = "False";
 }
 
 export class MLPResult {

@@ -1,12 +1,14 @@
 FROM node:8
 
 # set up angular cli
-RUN yarn global add @angular/cli@1.2.6
+#RUN yarn global add @angular/cli@1.2.6
+
 
 WORKDIR /app
 COPY package.json /app
-COPY yarn.lock /app
-RUN yarn install --pure-lockfile
+#COPY yarn.lock /app
+#RUN yarn install --pure-lockfile
+RUN npm install
 COPY . /app
 
 # create watch files

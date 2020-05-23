@@ -5,7 +5,7 @@ import { EstadisticasComponent } from './components/pages/estadisticas/estadisti
 export const ROUTES: Routes = [
     // routes from pages
     {path: 'home', component: HomeComponent, data: {title: 'Modelado'}},
-    {path: 'estadisticas', component: EstadisticasComponent, data: {title: 'Visualización'}},
+    {path: 'visualizacion', component: EstadisticasComponent, data: {title: 'Visualización'}},
 
     // default redirect
     {path: '**', redirectTo: '/home'}

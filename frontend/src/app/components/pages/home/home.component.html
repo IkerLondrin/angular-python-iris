@@ -1,17 +1,15 @@
-<div fxLayoutAlign="center center" fxLayout="column" >
-    <div class="home__training" style="width: 700px;">
-        <h3>Selección de modelo de ML</h3>
-        <mat-form-field class="dropdown-modelos">
-            <mat-label>Seleccionar modelo de clasificación...</mat-label>
-            <select matNativeControl required [(ngModel)]="modeloSeleccionado">
-                <option *ngFor="let modelo of modelosDisponibles" [ngValue]="modelo.id">
-                    {{modelo.model}}
-                </option>
-            </select>
-        </mat-form-field>
-        <selector-modelo [modelo]="modeloSeleccionado" (accuracyModelo)="AccuracyShare($event)"></selector-modelo>
-        <app-precision [precisionModelo]="accuracyModelo"></app-precision>
-        <app-selector-variables [accuracyModelo]="accuracyModelo" [colorScheme]="colorScheme"
-            [modelo]="modeloSeleccionado"></app-selector-variables>
-    </div>
+<div class="selector-modelo">
+    <h3>Selección de modelo de ML</h3>
+    <mat-form-field class="dropdown-modelos">
+        <mat-label>Seleccionar modelo de clasificación...</mat-label>
+        <select matNativeControl required [(ngModel)]="modeloSeleccionado">
+            <option *ngFor="let modelo of modelosDisponibles" [ngValue]="modelo.id">
+                {{modelo.model}}
+            </option>
+        </select>
+    </mat-form-field>
+    <selector-modelo [modelo]="modeloSeleccionado" (accuracyModelo)="AccuracyShare($event)"></selector-modelo>
+    <app-precision [precisionModelo]="accuracyModelo"></app-precision>
+    <app-selector-variables [accuracyModelo]="accuracyModelo" [colorScheme]="colorScheme" [modelo]="modeloSeleccionado">
+    </app-selector-variables>
 </div>

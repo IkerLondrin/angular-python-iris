@@ -2,6 +2,8 @@
 $primary: #1a242c;
 $accent: #e67303;
 $warn: #e81746;
+$light-black: #1a1717;
+$electric-blue: #0004ff;
 
 // other colors
 $white-bg: #f7f7f7;
@@ -24,7 +26,7 @@ $font-size-regular: 14px;
 $font-size-small: 12px;
 
 // sizes
-$unit-base: 8px;
+$unit-base: 2px;
 $unit-xs: 8px;
 $unit-sm: 16px;
 $unit-md: 24px;
@@ -52,4 +54,4 @@ $screen-xl-max:              20000px;
 
 // components
 
-$top-nav-height: 60px;
+$top-nav-height: 20px;

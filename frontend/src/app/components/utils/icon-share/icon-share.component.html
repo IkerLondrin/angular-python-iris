@@ -1,0 +1,10 @@
+<!-- MOSTRAMOS UN ICONO EN FUNCIÓN DEL NUMERO DE ENTRADA -->
+
+<div *ngIf="tipoDato == 'number'" align="center">
+    <div *ngIf="data<=tresshold">
+        <img src="assets/imgs/sadicon.png" class="icon-show">
+    </div>
+    <div *ngIf="data>tresshold">
+        <img src="assets/imgs/happyicon.png" class="icon-show">
+    </div>
+</div>

@@ -1,16 +1,42 @@
-$chart-min-height: 300px;
-$chart-width: 600px;
-.home__chart-container {
-    min-height: $chart-min-height;
-    width: $chart-width;
-    max-width: 100%;
+body,
+html {
+    width: 100%;
+    height: 95%;
+    margin: 0;
 }
 
 .dropdown-modelos {
     width: 300px;
-    max-width: 100%;
+    max-width: 85%;
 }
 
-.selector-modelo {
-    width: 700px;
+.wrapper {
+    width: 100%;
+    height: 100%;
 }
+
+.leftpane {
+    text-align: center;
+    width: 30%;
+    height: 100%;
+    float: left;
+    border-collapse: collapse;
+}
+
+.middlepane {
+    text-align: center;
+    width: 30%;
+    height: 100%;
+    float: left;
+    border-collapse: collapse;
+}
+
+.rightpane {
+    text-align: center;
+    width: 30%;
+    height: 100%;
+    position: relative;
+    float: right;
+    border-collapse: collapse;
+}
+

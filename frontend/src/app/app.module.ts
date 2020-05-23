@@ -24,6 +24,7 @@ import { PredictionsComponent } from './components/charts/predictions/prediction
 import { EstadisticasComponent } from './components/pages/estadisticas/estadisticas.component';
 import { VisualizacionComponent } from './components/charts/visualizacion/visualizacion.component';
 import { SpinnerComponent } from './components/utils/spinner/spinner.component';
+import { IconShareComponent } from './components/utils/icon-share/icon-share.component';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import { SpinnerComponent } from './components/utils/spinner/spinner.component';
         PredictionsComponent,
         EstadisticasComponent,
         VisualizacionComponent,
-        SpinnerComponent
+        SpinnerComponent,
+        IconShareComponent
     ],
     imports: [
         BrowserModule,

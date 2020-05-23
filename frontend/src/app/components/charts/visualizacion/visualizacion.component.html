@@ -1,3 +1,4 @@
+<app-spinner *ngIf="!iris"></app-spinner>
 <div fxLayout="row" fxLayoutGap="32px">
     <mat-card>
         <plotly-plot [data]="graphSepal.data" [layout]="graphSepal.layout"></plotly-plot>

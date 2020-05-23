@@ -13,25 +13,21 @@ export class VisualizacionComponent implements OnChanges {
   graphSepal: any;
   graphPetal: any;
 
-  
-
   constructor() {
-
   }
 
   ngOnChanges(changes: SimpleChanges) {
     // only run when property "data" changed
-    if (changes['iris']) {
+    if (changes) {
       this.grafico();
     }
 }
-
 
   grafico() {
     this.graphSepal = {
       data: [{
         x: this.iris[1].value, y: this.iris[2].value,
-        type: 'scatter', mode: 'markers', marker: { color: 'green' }
+        type: 'scatter', mode: 'markers', marker: { color: 'blue' }
       }],
       layout: {
         width: 450, title: 'Sepal width and length',

@@ -21,6 +21,9 @@ export class MainLayoutComponent implements OnInit {
     public logoUrl: string = '';
 
     @Input()
+    public logoGithub: string = '';
+
+    @Input()
     public hasContentPadding: boolean = true;
 
     constructor() {

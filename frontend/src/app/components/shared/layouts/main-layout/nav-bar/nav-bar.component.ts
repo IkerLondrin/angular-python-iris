@@ -20,6 +20,9 @@ export class NavBarComponent implements OnInit {
     @Input()
     public logoUrl: string = '';
 
+    @Input()
+    public logoGithub: string = '';
+
     constructor() {
     }
 

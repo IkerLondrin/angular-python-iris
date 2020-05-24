@@ -1,52 +1,21 @@
-# Data Science Web Application Tutorial
+# angular-python-iris
 
-This repository is meant to demonstrate the use of Flask and Angular to build a simple, but state-of-the-art, web application which can be used for POCs.
-Read the corresponding Medium article [here](https://medium.com/@dvelsner/deploying-a-simple-machine-learning-model-in-a-modern-web-application-flask-angular-docker-a657db075280).
+Repositorio creado para demostrar la utilización de un backend creado con flask y un frontend creado con Angular. 
 
-## Clone/Fork repository
+Con ello se trata de crear una API que ofrece servicios de Machine Learning (simples, con el único objetivo de mostrar la conexión de Flask con Angular) y un frontend que muestra dichos resultados.
 
-First fork or clone this repo:
-
-e.g. `git clone https://github.com/delsner/flask-angular-data-science.git`
- 
-
-## Build images and run containers with docker-compose
-
-After cloning the repository go inside the project folder:
-
-`cd flask-angular-data-science`
-
-Run `docker-compose up` which will start a Flask web application for the backend API (default port `8081`) and an Angular frontend served through a webpack development web server (default port `4200`).
-
-
-## Access your app
-
-In your browser navigate to: `http://localhost:4200` (or whatever port you defined for the frontend in `docker-compose.yml`).
-
-For testing your backend API I recommend using [Postman](https://www.getpostman.com/).
-  
-
-## Working __without__ docker 
-
-I highly recommend the use of docker and docker-compose as it is far simpler to get started than to run all of the following manually.
-
-
-### Backend development
+### Backend 
 
 Navigate inside the backend directory: `cd backend`
 
-Install pip dependencies: `pip install -r requirements.txt`
+Instalar las dependencias: `pip install -r requirements.txt` (es posible que tengamos que instalar manualmente alguna versión que de errores)
 
-Run `python app.py` in backend root (will watch files and restart server on port `8081` on change).
+Ejecutar `python app.py` en el directorio del backend.
 
-### Frontend development
+### Frontend 
 
-Navigate inside the frontend directory: `cd frontend`
+Instalar las dependencias: `npm install` (cogerá las librerías y dependencias del fichero packages.json) 
 
-Assure you have [Nodejs](https://nodejs.org/en/), [Yarn](https://yarnpkg.com/en/docs/install) and the [angular-cli](https://cli.angular.io/) installed.
+Ejecutamos  `npm start` en el directorio del frontend.
+Todas las llamadas realizadas al endpoint `/api` serán reenviadas al backend (que escucha en el puerto `8081` con la configuración inicial), esto puede cambiarse en `proxy.conf.json`.
 
-Install npm dependencies: `yarn install --pure-lockfile` 
-
-Run `yarn start` in frontend root (will watch files and restart dev-server on port `4200` on change).
-All calls made to `/api` will be proxied to backend server (default port for backend `8081`), this can be changed in `proxy.conf.json`.
-# angular-python-iris

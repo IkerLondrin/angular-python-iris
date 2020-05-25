@@ -1,9 +1,9 @@
 # Flask backend API
 
-## Development server
+## Instalar dependencias
 
-Run `python app.py` to start development server on port `8081` to watch files and restart on update.
+Intentar instalar las dependencias de `requirements.txt`, este es el primer export que hice pero está hecho de una manera un poco rara. Si este falla, he creado otro `requirementsBueno.txt` con las versiones exactas que tengo instaladas en el momento de crear la API.
 
-## Use from docker container
+## Servidor de desarrollo (API)
 
-Clone project on your remote machine (needs to have docker daemon installed), then build image (`docker build -t flask-backend .`) and finally run the image by using `docker run -p 8081:8081 -v /HOST/PATH/TO/BACKEND/FOLDER:/app flask-backend`.
+Ejecutar `python app.py` para crear el servidor web en localhost en el puerto `8081` (se puede modificar libremente siempre y cuando luego se tenga en cuenta para que las request tendrán que hacerse a dicho puerto).

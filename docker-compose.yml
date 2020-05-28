@@ -1,4 +1,4 @@
-version: "3"
+version: "1"
 services:
   frontend:
     image: frontend-angular
@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: "frontend-app"
     volumes:
-      - ./frontend/src:/app/src # for watching files
+      - ./frontend/src:/app/src # para que el docker acceda a los ficheros del front
     ports:
       - "4200:4200"
   backend:
@@ -17,6 +17,6 @@ services:
       dockerfile: Dockerfile
     container_name: "backend-app"
     volumes:
-        - ./backend:/app # for watching files
+        - ./backend:/app #para que el docker acceda a los ficheros del back
     ports:
-      - "8081:8081" # if changed, please change port in `frontend/proxy.conf.dev.json`
+      - "8081:8081" # para el puerto de la api. Si lo cambiamos aquí debemos cambiarlo también en `frontend/proxy.conf.dev.json`

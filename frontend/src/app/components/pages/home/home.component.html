@@ -1,6 +1,9 @@
 <div class="wrapper">
     <div class="leftpane">
+        <div class="titulo-seleccion">
             <h3>Selección de modelo de ML</h3>
+        </div>
+        <div class="card-seleccion">
             <mat-form-field class="dropdown-modelos">
                 <mat-label>Seleccionar modelo de clasificación...</mat-label>
                 <select matNativeControl required [(ngModel)]="modeloSeleccionado">
@@ -9,7 +12,10 @@
                     </option>
                 </select>
             </mat-form-field>
-        <selector-modelo [modelo]="modeloSeleccionado" (accuracyModelo)="AccuracyShare($event)"></selector-modelo>
+        </div>
+        <div>
+            <selector-modelo [modelo]="modeloSeleccionado" (accuracyModelo)="AccuracyShare($event)"></selector-modelo>
+        </div>
     </div>
     <div class="middlepane">
         <app-precision [precisionModelo]="accuracyModelo"></app-precision>

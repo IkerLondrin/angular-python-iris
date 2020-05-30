@@ -1,17 +1,29 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-precision',
   templateUrl: './precision.component.html',
   styleUrls: ['./precision.component.scss']
 })
-export class PrecisionComponent {
+export class PrecisionComponent implements OnChanges {
 
   @Input() precisionModelo: number;
-  public colorScheme = {
-    domain: ['#1a242c', '#e81746', '#e67303', '#f0f0f0']
-  };
+  colorScheme: any;
 
   constructor() { }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes) {
+      if (this.precisionModelo < 85) {
+        this.colorScheme = {
+          domain: ['#e81746', '#e81746', '#e81746', '#e81746']
+        }
+      }
+      else {
+        this.colorScheme = {
+          domain: ['#32CD32', '#32CD32', '#32CD32', '#32CD32']
+        }
+      }
+    }
+  }
 }

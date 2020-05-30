@@ -15,6 +15,25 @@ html {
     height: 100%;
 }
 
+.titulo-seleccion {
+    text-align: center;
+    width: 40%;
+    height: 12%;
+    position: relative;
+    float: left;
+    border-collapse: collapse;
+
+}
+
+.card-seleccion {
+    text-align: center;
+    width: 60%;
+    height: 12%;
+    position: relative;
+    float: right;
+    border-collapse: collapse;
+}
+
 .leftpane {
     text-align: center;
     width: 30%;
@@ -38,5 +57,6 @@ html {
     position: relative;
     float: right;
     border-collapse: collapse;
+    margin-right: 10%;
 }
 
